@@ -4,7 +4,11 @@ Tujuan utama adalah memahami cara membuat environment terisolasi, mengelola konf
 dan menjalankan API sederhana yang nantinya bisa dikembangkan untuk deployment model *Machine Learning*.
 
 ## Setup Project
-1. Clone repo.
+1. Clone this repo.
+    ```bash
+    git clone <repo_url>
+    cd <repo_name>
+    ```
 2. Buat virtual environment.
    ```bash
    python -m venv venv
@@ -25,6 +29,7 @@ dan menjalankan API sederhana yang nantinya bisa dikembangkan untuk deployment m
     ```
 
 ## Tambahan (Best Practice)
+Lakukan hal ini setelah anda menyelesaikan projek dan ingin publish di Github:
 - Buat `requirements.txt`
     ```bash
     pip freeze > requirements.txt
@@ -37,10 +42,11 @@ dan menjalankan API sederhana yang nantinya bisa dikembangkan untuk deployment m
     ```
 
 ## Endpoints
-- `GET /` → Hello World
-- `GET /test` → Info environment (expose password/DB hanya untuk testing didalam development)
-- `GET /items/{item_id}` → Return item by ID
-- `POST /items/` → Create item (mengirim data dalam JSON body)
+- `GET /` → Hello World.
+- `GET /env` → Info environment (expose password/DB hanya untuk testing didalam development).
+- `GET /items/{item_id}` → Return item by ID.
+- `POST /items/` → Create item (mengirim data dalam JSON body).
+- `POST /predict/` → Melakukan prediksi penumpang titanic selamat atau tidak.
 
 ## Contoh `.env.development`
 ```env
@@ -57,12 +63,23 @@ DATABASE_URL=postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}
 
 ## Project Structure
 ```
-├── main.py
-├── requirements.txt
-├── .env.development
-├── .env.production
-├── .env.staging
-├── .gitignore
-├── README.md
-└── venv/
+btj_academy_model-deploy/
+├── api/
+│ └── predict/
+│ ├── schema.py # Pydantic models untuk request/response
+│ ├── service.py # Business logic / model inference
+│ ├── views.py # Endpoint FastAPI (router)
+│
+├── models/
+│ └── titanic_model.pkl # Serialized ML model (Pickle)
+│
+├── venv/ # Virtual environment
+│
+├── .env.development # Environment config (development)
+├── .env.production # Environment config (production)
+├── .env.staging # Environment config (staging)
+├── .gitignore # Ignore rules for git
+├── main.py # Entry point FastAPI app
+├── README.md # Project documentation
+└── requirements.txt # Python dependencies
 ```
