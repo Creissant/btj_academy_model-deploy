@@ -13,7 +13,11 @@ from api.predict.schema import TitanicParams
 # Load model + handling cross platform
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 MODEL_PATH = BASE_DIR / "models" / "titanic_model.pkl"
-model = joblib.load(MODEL_PATH)
+
+try:
+    model = joblib.load(MODEL_PATH)
+except FileNotFoundError:
+    raise FileNotFoundError("Model file not found at path: {MODEL_PATH}")
 
 class PredictTitanic:
     def __init__(self, params: TitanicParams):
@@ -38,5 +42,5 @@ class PredictTitanic:
                 "message": "Prediction success"
             }
 
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+        except Exception as err:
+            raise RuntimeError(f"Prediction failed: {err}") from err

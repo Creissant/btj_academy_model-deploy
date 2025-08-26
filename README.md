@@ -65,13 +65,18 @@ DATABASE_URL=postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}
 ```
 btj_academy_model-deploy/
 ├── api/
-│ └── predict/
-│ ├── schema.py # Pydantic models untuk request/response
-│ ├── service.py # Business logic / model inference
-│ ├── views.py # Endpoint FastAPI (router)
+│   ├── predict/
+│   ├── schema.py # Pydantic models for request/response
+│   ├── service.py # Business logic / model inference
+│   └── views.py # Endpoint FastAPI (router)
 │
 ├── models/
-│ └── titanic_model.pkl # Serialized ML model (Pickle)
+│   └── titanic_model.pkl # Serialized ML model (not included)
+│
+├── frontend/
+│   ├── api/
+│   │   └── prediction.py # helper request to backend
+│   └── app.py # index frontend with streamlit
 │
 ├── venv/ # Virtual environment
 │
