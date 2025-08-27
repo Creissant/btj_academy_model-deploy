@@ -9,7 +9,7 @@ load_dotenv(".env.development")
 # get env value
 URL= os.getenv("BE_API_HOST")
 PORT= os.getenv("BE_API_PORT")
-API_URL = f"http://{URL}:{PORT}/predict/"
+API_URL = f"http://{URL}:{PORT}/predict/titanic/v2"
 
 def predict_survival(payload: dict):
     """
