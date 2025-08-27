@@ -210,4 +210,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Model
 models/titanic_model.pkl
+titanic_model-mlflow.pkl
+
+# Data
+data/raw/Titanic-Dataset.csv
+
+# MLflow
+mlruns/
+mlartifacts/

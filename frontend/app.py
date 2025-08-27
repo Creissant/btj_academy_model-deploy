@@ -9,7 +9,7 @@ st.write("Enter the details of a Titanic passenger to predict whether he survive
 with st.form("prediction_form"):
     pclass = st.selectbox("Passenger Class", [1, 2, 3])
     sex = st.selectbox("Gender of the passenger", ["male", "female"])
-    age = st.number_input("Age (in years)", min_value=0, max_value=100, value=25)
+    age = st.number_input("Age (in years)", min_value=0, max_value=100, value=0)
     sibsp = st.number_input("Number of Siblings/Spouses Aboard", min_value=0, value=0)
     parch = st.number_input("Number of Parents/Children Aboard", min_value=0, value=0)
     fare = st.number_input("Ticket Fare", min_value=0.0, value=0.0, step=0.0001, format="%.4f")
