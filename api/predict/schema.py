@@ -20,7 +20,7 @@ class TitanicParams(BaseModel):
     SibSp: int = Field(ge=0, example=1, description="Number of siblings/spouses aboard")
     Parch: int = Field(ge=0, example=0, description="Number of parents/children aboard")
     Fare: float = Field(ge=0, example=7.25, description="Ticket fare")
-    Embarked: Literal["C", "Q", "S"] = Field(example="S", description="Port of Embarktion") # str
+    Embarked: Literal["C", "Q", "S"] = Field(example="S", description="Port of Embarkation") # str
     NameTitle: Literal["Mr", "Mrs", "Miss", "Master", "Rare"] = Field(example="Mr", description="Passenger's name title")  # str
 
 class PredictionResult(BaseModel):

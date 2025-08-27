@@ -23,6 +23,8 @@ def predict_titanic(params: TitanicParams):
             probability=pred.get("probability")
         )
 
+    except HTTPException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.detail) from e
     except FileNotFoundError as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
     except ValueError as e:
